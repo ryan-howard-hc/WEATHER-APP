@@ -35,9 +35,9 @@ function currentWeatherData() {
 
 function createWeatherTable(data) {
   var temperatureKelvin = data.main.temp;
-  var temperatureCelsius = temperatureKelvin - 273.15;
-  var temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;
-  
+  var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
+  var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(1);
+  //.toFixed(1) reduces the million decimals created at the end of the number
   var table = `
     <table class="table">
       <tbody>

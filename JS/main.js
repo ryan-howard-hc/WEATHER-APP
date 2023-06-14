@@ -33,8 +33,11 @@ function currentWeatherData() {
 //the function below is the function referenced with data inserted from the currentWeatherData function
 //Everything in the ${data.} is the inserted parameters pulled from the API and inserted directly into the table
 
-
 function createWeatherTable(data) {
+  var temperatureCelsius = data.main.temp;
+  var temperatureFahrenheit = (temperatureCelsius * 9/5) + 32;
+  var temperatureKelvin = temperatureCelsius + 273.15;
+  
   var table = `
     <table class="table">
       <tbody>
@@ -45,6 +48,8 @@ function createWeatherTable(data) {
         <tr>
         <th scope="row">Temperature</th>
         <td>${data.main.temp} °C</td>
+        <td>${temperatureKelvin} K</td>
+        <td>${temperatureFahrenheit} °F</td>
     </tr>
     <tr>
         <th scope="row">Humidity</th>

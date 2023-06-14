@@ -1,0 +1,31 @@
+# INIT
+How to use axios to retrieve data and display it? How to fetch location data from API (openweathermap.org/)?
+Used on desktop or mobile?
+How to display the data?
+(EXTRA) How to store data in Local Storage?
+
+# STATE
+OBJECT FOR CURRENT WEATHER DATA - currentWeatherData
+OBJECT FOR CURRENT VALUE OF ZIP AND PREVIOUS ZIP SEARCHES - userInput, previousSearches
+## UI
+1. Header/Title
+2. Weather Display
+    - databox in bootstrap
+    - addEventListener for userInput
+    - Error display if invalid input is entered (incorrect zip/special characters)
+
+# RENDER
+
+checkUserInput(){
+    
+}
+
+fetchData (){    //send api key and user input to API
+    displayTemp(){    //compute temp or retrieve based to update UI
+    
+    }
+}
+
+
+# END
+

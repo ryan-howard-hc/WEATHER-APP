@@ -29,7 +29,11 @@ function currentWeatherData() {
           var table = createWeatherTable(data);
           var weatherDataDiv = document.getElementById("weatherData");
           weatherDataDiv.innerHTML = table;
-          weatherDataDiv.style.display = "block";
+
+          // var h1Element = document.querySelector("h1");
+          // h1Element.insertAdjacentElement("afterend", weatherDataDiv);
+                    //ATTEMPT TO DISPLAY HEADER AFTER
+
       })
       .catch(error => alert(error));
       //    Added an alert to the .catch
@@ -59,7 +63,8 @@ function createWeatherTable(data) {
     //T
     //It's a template literal which allows me to put 
   var table = `
-    <table class="table">
+  <h1>WEATHER OR NOT</h1>  
+    <table class="table mt-4">
       <tbody>
         <tr>
           <th scope="row">City</th>     
@@ -90,4 +95,5 @@ function createWeatherTable(data) {
   `;
   return table;
 }
-
+//FIXED HEADER DISAPPEARING BY PUTTING IT IN THE TABLE
+ 

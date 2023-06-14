@@ -16,19 +16,25 @@ function currentWeatherData() {
   var zipCode = document.getElementById("zipCodeInput").value;
 
   fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`)
-      .then(response => response.json())
-      .then(data => {
+  .then(response => response.ok ? response.json() : Promise.reject('Invalid zip code'))
+      // ^ ABOVE added boolean TRUE/FALSE using ? whether the response is valid or not
+      //    The promise is a way to handle asynchronosu operation
+      //    Asynchronous operation is a way to run programs in parallel
+      //    ASK WHY THIS NEEDS TO BE ASYNC (IF IT DOES)
+      //    The .then is what to do if correct, .catch is if it catches an error
+      //    IS THIS BASICALLY THE SAME AS IF, ELSE?
+  .then(data => {
           var table = createWeatherTable(data);
           var weatherDataDiv = document.getElementById("weatherData");
           weatherDataDiv.innerHTML = table;
           weatherDataDiv.style.display = "block";
       })
-      // .catch(error => {
-      //     console.log('Error:', error);
-      // });
+      .catch(error => alert(error));
+      //    Added an alert to the .catch
 
   console.log("Zip Code:", zipCode);
 }
+
 
 //the function below is the function referenced with data inserted from the currentWeatherData function
 //Everything in the ${data.} is the inserted parameters pulled from the API and inserted directly into the table

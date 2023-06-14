@@ -7,6 +7,7 @@
 //the JSON is sent as a variable (LINE 17) to a function(LINE 34) that relays the data pulled
 
 //(AHA!!!! apparently divs can be created in JS and sent to HTML? Probably how you do that stretch goal)
+
 //either way, from this (LINE 21), this new variable is sent to the weatherData div in HTML)
 //23 and 24 format this into a table and "block"
 
@@ -19,7 +20,8 @@ function currentWeatherData() {
   .then(response => response.ok ? response.json() : Promise.reject('Invalid zip code'))
       // ^ ABOVE added boolean TRUE/FALSE using ? whether the response is valid or not
       //    The promise is a way to handle asynchronosu operation
-      //    Asynchronous operation is a way to run programs in parallel
+
+      //    Asynchronous operation is a way to run programs in parallel]
       //    ASK WHY THIS NEEDS TO BE ASYNC (IF IT DOES)
       //    The .then is what to do if correct, .catch is if it catches an error
       //    IS THIS BASICALLY THE SAME AS IF, ELSE?
@@ -36,14 +38,26 @@ function currentWeatherData() {
 }
 
 
-//the function below is the function referenced with data inserted from the currentWeatherData function
+//the function below is a nested function with data inserted from the currentWeatherData function
+//it uses the data from the lines above it within same function
 //Everything in the ${data.} is the inserted parameters pulled from the API and inserted directly into the table
 
+//THIS ENTIRE FUNCTION IS WITHIN THE ABOVE FUNCTION WHICH IS TRIGGERED BY THE BUTTON CLICK
 function createWeatherTable(data) {
+  var weatherIcon = data.weather[0].icon;
+    //same deal as below. Pulled from openweathers api from its own url
+    //the 0 is a placeholder for each icons ID tags
+  var iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
+    //The url variable tied to the variable that pulls directly from the api
+
   var temperatureKelvin = data.main.temp;
   var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
   var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(1);
-  //.toFixed(1) reduces the million decimals created at the end of the number
+    //.toFixed(1) reduces the million decimals created at the end of the number
+    
+    //BELOW is the table directly in created in JS
+    //T
+    //It's a template literal which allows me to put 
   var table = `
     <table class="table">
       <tbody>
@@ -66,8 +80,10 @@ function createWeatherTable(data) {
         <td>${data.main.pressure} hPa</td>
     </tr>
     <tr>
-        <th scope="row">Description</th>
+        <th scope="row">Condition</th>
         <td>${data.weather[0].description}</td>
+          <td><img src="${iconUrl}" alt="Weather Icon"></td>
+
     </tr>
 </tbody>
 </table>

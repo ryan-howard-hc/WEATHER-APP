@@ -2,7 +2,12 @@
 How to use axios to retrieve data and display it? How to fetch location data from API (openweathermap.org/)?
 Used on desktop or mobile?
 How to display the data?
-(EXTRA) How to store data in Local Storage?
+
+(EXTRA) ONLY JS RENDERED
+(EXTRA) Historical data displayed as well
+(EXTRA) How to store data in Local Storage? HOLD ONTO PREVIOUS SEARCHES
+(EXTRA) Weather auto pulled from location data?
+(EXTRA) DATA stored if page is refreshed?
 
 # STATE
 OBJECT FOR CURRENT WEATHER DATA - currentWeatherData
@@ -16,8 +21,10 @@ OBJECT FOR CURRENT VALUE OF ZIP AND PREVIOUS ZIP SEARCHES - userInput, previousS
 
 # RENDER
 
-checkUserInput(){
-    
+checkUserInput(){      //checks for validity
+    previousSearches(){
+
+    }
 }
 
 fetchData (){    //send api key and user input to API
@@ -26,6 +33,9 @@ fetchData (){    //send api key and user input to API
     }
 }
 
+renderUI(){         //displays data pulled from API
+    
+}
 
 # END
 

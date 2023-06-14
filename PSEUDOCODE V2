@@ -22,19 +22,26 @@ OBJECT FOR CURRENT VALUE OF ZIP AND PREVIOUS ZIP SEARCHES - userInput, previousS
 # RENDER
 
 checkUserInput(){      //checks for validity
+    document.getElementByID("zipCodeInput")
+
     previousSearches(){
 
     }
 }
 
 fetchData (){    //send api key and user input to API
-    displayTemp(){    //compute temp or retrieve based to update UI
+
+    currentWeatherData(){
+
+        displayTemp(){    //compute temp or retrieve based to update UI
     
+        }   
     }
 }
 
 renderUI(){         //displays data pulled from API
     
+    zipCode
 }
 
 # END

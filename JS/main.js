@@ -64,6 +64,8 @@ function createWeatherTable(data) {
     //It's a template literal which allows me to put 
   var table = `
   <h1>WEATHER OR NOT</h1>  
+  <input type="text" id="zipCodeInput" placeholder="ENTER ZIP CODE HERE">
+  <button id="currentWeatherData" onclick="currentWeatherData()">Get Weather</button>
     <table class="table mt-4">
       <tbody>
         <tr>

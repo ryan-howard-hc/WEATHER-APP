@@ -1,17 +1,16 @@
 //This function is called when the Get Weather button is clicked
-//Retrieves API Key, as well as the zip entered by user (LINES 14 and 15)
+//Retrieves API Key, as well as the zip entered by user (LINES 15 and 16)
 //the  nested fetch() function makes a GET request which can be cached,reloaded,bookmarked, and the parameters remain in browser history unlike a POST request
       //ASK JUSTIN AND MICHAEL WHY I WOULD USE POST EVER 
       //Re Corey: POSTs are usually meant to be used whenever you're doing something that will alter state/data, like updating a record, or filling out a form.
       //Re Corey: Most frameworks support securing POST actions with antiforgery tokens as well, which adds security
-//the api data is converted to JSON (LINE 27)
+//the api data is converted to JSON (LINE 28)
       //JSON is text representation of JS object literals and arrays
-//the JSON is sent as a variable (LINE 27) to a function(LINE 48) that relays the data pulled
-
+//the JSON is sent as a variable (LINE 28) to a function(LINE 49) that relays the data pulled
 //(AHA!!!! apparently divs can be created in JS and sent to HTML? Probably how you do that stretch goal)
 
-//either way, from this (LINE 28), this new variable is sent to the weatherData div in HTML)
-//LINE 29  formats this into a table and also sends it to HTML?
+//either way, from this (LINE 29), this new variable is sent to the weatherData div in HTML)
+//LINE 30  formats this into a table and also sends it to HTML?
 function currentWeatherData() {
   var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
   var zipCode = document.getElementById("zipCodeInput").value;

@@ -1,7 +1,9 @@
 //This function is called when the Get Weather button is clicked
 //Retrieves API Key, as well as the zip entered by user (LINES 14 and 15)
 //the  nested fetch() function makes a GET request which can be cached,reloaded,bookmarked, and the parameters remain in browser history unlike a POST request
-      //ASK JUSTIN AND MICHAEL WHY I WOULD USE POST EVER
+      //ASK JUSTIN AND MICHAEL WHY I WOULD USE POST EVER 
+      //Re Corey: POSTs are usually meant to be used whenever you're doing something that will alter state/data, like updating a record, or filling out a form.
+      //Re Corey: Most frameworks support securing POST actions with antiforgery tokens as well, which adds security
 //the api data is converted to JSON (LINE 27)
       //JSON is text representation of JS object literals and arrays
 //the JSON is sent as a variable (LINE 27) to a function(LINE 48) that relays the data pulled
@@ -14,16 +16,16 @@ function currentWeatherData() {
   var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
   var zipCode = document.getElementById("zipCodeInput").value;
 
-  fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`)
-  .then(response => response.ok ? response.json() : Promise.reject('Invalid zip code'))
+  axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`)
+    .then(response => {
+      var data = response.data;
       // ^ ABOVE added boolean TRUE/FALSE using ? whether the response is valid or not
-      //    The promise is a way to handle asynchronosu operation
-
-      //    Asynchronous operation is a way to run programs in parallel]
-      //    ASK WHY THIS NEEDS TO BE ASYNC (IF IT DOES)
+      //    The promise is a way to handle asynchronosu operation 
+          //    Asynchronous operation is a way to run programs in parallel]
+          //    ASK WHY THIS NEEDS TO BE ASYNC (IF IT DOES)
+          
       //    The .then is what to do if correct, .catch is if it catches an error
       //    IS THIS BASICALLY THE SAME AS IF, ELSE?
-  .then(data => {
           var table = createWeatherTable(data);
           var weatherDataDiv = document.getElementById("weatherData");
           weatherDataDiv.innerHTML = table;
@@ -33,8 +35,10 @@ function currentWeatherData() {
                     //ATTEMPT TO DISPLAY HEADER AFTER
 
       })
-      .catch(error => alert(error));
-      //    Added an alert to the .catch
+      .catch(error => {
+        console.error(error);
+        alert('Error retrieving weather data');
+      });
 
   console.log("Zip Code:", zipCode);
 }
@@ -97,3 +101,6 @@ function createWeatherTable(data) {
 }
 //FIXED HEADER DISAPPEARING BY PUTTING IT IN THE TABLE
  
+
+//Like, in a "real" environment, sensitive information like an API key, a connection string, etc. would be in a separate configuration file that the application reads from.
+//I'm sure there are ways do that in JS as well, but that's overkill for something like this. I was just speaking in a broader sense

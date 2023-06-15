@@ -9,6 +9,7 @@ How to display the data?
 (EXTRA) Weather auto pulled from location data?
 (EXTRA) DATA stored if page is refreshed?
 
+
 # STATE
 OBJECT FOR CURRENT WEATHER DATA - currentWeatherData
 OBJECT FOR CURRENT VALUE OF ZIP AND PREVIOUS ZIP SEARCHES - userInput, previousSearches
@@ -18,6 +19,7 @@ OBJECT FOR CURRENT VALUE OF ZIP AND PREVIOUS ZIP SEARCHES - userInput, previousS
     - databox in bootstrap
     - addEventListener for userInput
     - Error display if invalid input is entered (incorrect zip/special characters)
+
 
 # RENDER
 

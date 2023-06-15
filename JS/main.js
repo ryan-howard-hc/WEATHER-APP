@@ -3,7 +3,7 @@
 //the  nested fetch() function makes a GET request which can be cached,reloaded,bookmarked, and the parameters remain in browser history unlike a POST request
       //ASK JUSTIN AND MICHAEL WHY I WOULD USE POST EVER 
       //Re Corey: POSTs are usually meant to be used whenever you're doing something that will alter state/data, like updating a record, or filling out a form.
-      //Re Corey: Most frameworks support securing POST actions with antiforgery tokens as well, which adds security
+      //Re Corey:Most frameworks support securing POST actions with antiforgery tokens as well, which adds security
 //the api data is converted to JSON (LINE 28)
       //JSON is text representation of JS object literals and arrays
 //the JSON is sent as a variable (LINE 28) to a function(LINE 49) that relays the data pulled
@@ -18,12 +18,11 @@ function currentWeatherData() {
   axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`)
     .then(response => {
       var data = response.data;
-      // ^ ABOVE added boolean TRUE/FALSE using ? whether the response is valid or not
-      //    The promise is a way to handle asynchronosu operation 
-          //    Asynchronous operation is a way to run programs in parallel]
+      //    The promise is a way to handle asynchronous operation 
+          //    Asynchronous operation is a way to run programs in parallel
           //    ASK WHY THIS NEEDS TO BE ASYNC (IF IT DOES)
-          
-      //    The .then is what to do if correct, .catch is if it catches an error
+
+      //    The .then is what to do if correct,        .catch is if it catches an error
       //    IS THIS BASICALLY THE SAME AS IF, ELSE?
           var table = createWeatherTable(data);
           var weatherDataDiv = document.getElementById("weatherData");
@@ -32,7 +31,6 @@ function currentWeatherData() {
           // var h1Element = document.querySelector("h1");
           // h1Element.insertAdjacentElement("afterend", weatherDataDiv);
                     //ATTEMPT TO DISPLAY HEADER AFTER
-
       })
       .catch(error => {
         console.error(error);
@@ -41,7 +39,6 @@ function currentWeatherData() {
 
   console.log("Zip Code:", zipCode);
 }
-
 
 //the function below is a nested function with data inserted from the currentWeatherData function
 //it uses the data from the lines above it within same function
@@ -59,9 +56,8 @@ function createWeatherTable(data) {
   var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
   var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(1);
     //.toFixed(1) reduces the million decimals created at the end of the number
-    
+
     //BELOW is the table directly in created in JS
-    //T
     //It's a template literal which allows me to put 
   var table = `
   <h1>WEATHER OR NOT</h1>  
@@ -103,3 +99,8 @@ function createWeatherTable(data) {
 
 //Like, in a "real" environment, sensitive information like an API key, a connection string, etc. would be in a separate configuration file that the application reads from.
 //I'm sure there are ways do that in JS as well, but that's overkill for something like this. I was just speaking in a broader sense
+
+
+function init () {
+  console.log("hello world")
+}

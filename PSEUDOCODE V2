@@ -33,15 +33,13 @@ fetchData (){    //send api key and user input to API
 
     currentWeatherData(){
 
-        displayTemp(){    //compute temp or retrieve based to update UI
-    
-        }   
+        var zipCode
     }
 }
 
-renderUI(){         //displays data pulled from API
+createWeatherTabke(){         //displays data pulled from API
     
-    zipCode
+
 }
 
 # END

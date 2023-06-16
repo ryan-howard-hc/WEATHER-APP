@@ -24,8 +24,11 @@ function currentWeatherData() {
       
       weatherDataDiv.appendChild(tableDiv); // APPENDS TABLE TO CORRESPONDING DIV IN HTML
 
-      
-
+      // function clearWeatherData() {
+      //   var weatherDataDiv = document.getElementById("weatherData");
+      //   weatherDataDiv.innerHTML = '';
+      // }
+      //attempt at trying to clear weather data
 
       const successCallback = (position) => {
         console.log(position);
@@ -42,6 +45,7 @@ function currentWeatherData() {
         console.error(error);
         alert('Error retrieving weather data');
       });
+      
 
   console.log("Zip Code:", zipCode);
 }

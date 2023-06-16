@@ -22,13 +22,10 @@ function currentWeatherData() {
       var tableDiv = createWeatherTable(data);        
       var weatherDataDiv = document.getElementById("weatherData"); //VARIABLE TO ATTACH TABLE TO INPUT IN HTML
       
+      
+
       weatherDataDiv.appendChild(tableDiv); // APPENDS TABLE TO CORRESPONDING DIV IN HTML
 
-      // function clearWeatherData() {
-      //   var weatherDataDiv = document.getElementById("weatherData");
-      //   weatherDataDiv.innerHTML = '';
-      // }
-      //attempt at trying to clear weather data
 
       const successCallback = (position) => {
         console.log(position);
@@ -38,23 +35,24 @@ function currentWeatherData() {
         console.log(error);
       };
       
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback); // All i had to do was copy and paste this in from freecodecamp
 
       })
+
       .catch(error => {
         console.error(error);
         alert('Error retrieving weather data');
       });
+      // function eraseWeatherData.appendChild(eraseWeatherData) {
+      //   var weatherDataDiv = document.getElementById("weatherData");
+      //   return weatherDataDiv.innerHTML = '';
+      // };
       
 
   console.log("Zip Code:", zipCode);
 }
 
 // createWeatherTable() pulls the data variable as an argument which itself is a variable pulled from the response from the API
-
-
-
-
 
 
 //the function below is a nested function with data inserted from the currentWeatherData function
@@ -117,3 +115,4 @@ table.appendChild(iconRow);
 
 //Like, in a "real" environment, sensitive information like an API key, a connection string, etc. would be in a separate configuration file that the application reads from.
 //I'm sure there are ways do that in JS as well, but that's overkill for something like this. I was just speaking in a broader sense
+//re:corey

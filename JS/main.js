@@ -73,17 +73,17 @@ var headers = ["City", "Temperature", "Temperature (Celsius)", "Temperature (Fah
 
 //2
   var weatherRow = document.createElement("tr");            
-  var celsiusTemp = Math.round(data.main.temp - 273.15);
-  var fahrenheitTemp = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);          
-  var cellsRow = [data.name, data.main.temp, celsiusTemp +"C",fahrenheitTemp+"F", data.main.humidity, data.weather[0].description];  //pulls from data variable which pulls from response data
+  var celsius = Math.round(data.main.temp - 273.15);
+  var fahrenheit = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);          
+  var dataRow = [data.name, data.main.temp, celsius +"C",fahrenheit+"F", data.main.humidity, data.weather[0].description];  //pulls from data variable which pulls from response data
 
-  cellsRow.forEach(function (cellText) { //cellsRow pulls array data while the cellText nested function provides framework to append to each cell
-    var cell = document.createElement("td");        //2B  Creates cell element connected to the cell
-    cell.textContent = cellText;                                  //gives the text content from cellsRow
+  dataRow.forEach(function (dataText) { //dataRow pulls array data while the cellText nested function provides framework to append to each cell
+    var dataCell = document.createElement("td");        //2B  Creates cell element connected to the cell
+    dataCell.textContent = dataText;                                  //gives the text content from dataRow
     
-    weatherRow.appendChild(cell);                                 //pushes the info into each cell of the weatherRow from the CellsRow
+    weatherRow.appendChild(dataCell);                                 //pushes the info into each cell of the weatherRow from the dataRow
   });
-  table.appendChild(weatherRow);          //attaches the subfunction from cellsRow variable/Bottom row
+  table.appendChild(weatherRow);          //attaches the subfunction from dataRow variable/Bottom row
 
 var iconRow = document.createElement("tr");
 var iconCell = document.createElement("td");

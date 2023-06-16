@@ -1,25 +1,27 @@
-.table {
-    background-color:aquamarine !important; 
-    border: 2px solid black !important; 
-  }
-  .table tr {
-    margin-bottom: 10px;
-  }
-  
-  .table th,
-  .table td {
-    background-color: aquamarine !important; 
-    
+table {
+    border-style: groove;
+    flex-direction: column;
+    background-color: aquamarine !important;
+}
 
-  }
-h1 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color:aquamarine;
-    padding: 10px;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+td, th {
+    border: 1px !important;
+    border-color: black !important;
+    padding: 10px !important;
+    background-color: aquamarine !important;
+    border-style: groove !important;
+
+}
+
+html {
+    background-color: aquamarine !important;
+}
+
+.tableDiv {
+    background-color: aquamarine !important;
+}
+
+tr:last-child td:last-child {
+   border: none !important;
   }
 

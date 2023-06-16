@@ -19,14 +19,11 @@ function currentWeatherData() {
     .then(response => {
 
       var data = response.data;
-      var table = createWeatherTable(data);
-      var weatherDataDiv = document.getElementById("weatherData");
-      weatherDataDiv.innerHTML = ''; // Clears content 
-      weatherDataDiv.appendChild(table); // Append the table to the div
+      var tableDiv = createWeatherTable(data);        
+      var weatherDataDiv = document.getElementById("weatherData"); //VARIABLE TO ATTACH TABLE TO INPUT IN HTML
+      
+      weatherDataDiv.appendChild(tableDiv); // APPENDS TABLE TO CORRESPONDING DIV IN HTML
 
-          // var h1Element = document.querySelector("h1");
-          // h1Element.insertAdjacentElement("afterend", weatherDataDiv);
-                    //ATTEMPT TO DISPLAY HEADER AFTER
 
       })
       .catch(error => {
@@ -55,21 +52,46 @@ function createWeatherTable(data) {
 
 
 
-  var headers = ["City", "Temperature", "Humidity", "Description"];
-  var headerRow = document.createElement("tr");
+//1
+var headers = ["City", "Temperature", "Temperature (Celsius)", "Temperature (Fahrenheit)", "Humidity", "Description"];//CAN EFFECTIVELY CHANGE THESE CORRESPONDING TO EACH HEADER CELL
+  var headerRow = document.createElement("tr");            
+ 
+  headers.forEach(function (headerText) {               //creates a function to add text to each header in the array using the callback function .forEach
 
+    var headerCell = document.createElement("th");        //creates the cells
+    headerCell.textContent = headerText;                  //
 
-//1  
-  headers.forEach(function (headerText) {
-    var headerCell = document.createElement("th");
-    headerCell.textContent = headerText;
     headerRow.appendChild(headerCell);
       //This block ties the text from the array to each header cell
       //through the appendChild element. 
   });
-  table.appendChild(headerRow);
+  table.appendChild(headerRow);     //attaches subfunction from headers variable/Top row
 
 
+
+
+
+//2
+  var weatherRow = document.createElement("tr");            
+  var celsiusTemp = Math.round(data.main.temp - 273.15);
+  var fahrenheitTemp = Math.round((data.main.temp - 273.15) * 9 / 5 + 32);          
+  var cellsRow = [data.name, data.main.temp, celsiusTemp +"C",fahrenheitTemp+"F", data.main.humidity, data.weather[0].description];  //pulls from data variable which pulls from response data
+
+  cellsRow.forEach(function (cellText) { //cellsRow pulls array data while the cellText nested function provides framework to append to each cell
+    var cell = document.createElement("td");        //2B  Creates cell element connected to the cell
+    cell.textContent = cellText;                                  //gives the text content from cellsRow
+    
+    weatherRow.appendChild(cell);                                 //pushes the info into each cell of the weatherRow from the CellsRow
+  });
+  table.appendChild(weatherRow);          //attaches the subfunction from cellsRow variable/Bottom row
+
+var iconRow = document.createElement("tr");
+var iconCell = document.createElement("td");
+var iconImg = document.createElement("img");
+iconImg.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+iconCell.appendChild(iconImg);
+iconRow.appendChild(iconCell);
+table.appendChild(iconRow);
 
   return table;
 }

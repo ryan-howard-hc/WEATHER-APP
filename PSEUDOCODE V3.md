@@ -4,12 +4,12 @@ Used on desktop or mobile?
 How to display the data?
 
 (EXTRA) ONLY JS RENDERED(DONE!)
-(EXTRA) AUTO BASED ON LOCATION DATA
 (EXTRA) Store multiple locations (KIND OF DONE???!?!? CHEESED)
 (EXTRA) Historical data displayed as well
 (EXTRA) How to store data in Local Storage? HOLD ONTO PREVIOUS SEARCHES
-(EXTRA) Weather auto pulled from location data?
+(EXTRA) Weather auto pulled from location data? (DONE!)
 (EXTRA) DATA stored if page is refreshed?
+(EXTRA) DYNAMIC CSS
 
 # STATE
 OBJECT FOR CURRENT WEATHER DATA - currentWeatherData
@@ -45,7 +45,7 @@ createWeatherTable(data) {
     }
     table.appendChild()
 
-    var dataRow - createElement
+    var weatherRow - createElement
         var celsius
         var fahrenheit
     var dataRow - [array of data parameters]

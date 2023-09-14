@@ -116,9 +116,7 @@ function currentWeatherData() {
   console.log("Zip Code:", zipCode);
 }
 
-// Define the createWeatherTable function separately
 function createWeatherTable(data) {
-  // Calculate temperature in Celsius and Fahrenheit
   var temperatureKelvin = data.main.temp;
   var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
   var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(1);
@@ -126,24 +124,19 @@ function createWeatherTable(data) {
   var table = document.createElement('table');
   var tbody = document.createElement('tbody');
   
-  // Create and append rows and cells
   createRow('City', data.name);
   createRow('Temperature', `${data.main.temp} K`, `${temperatureCelsius} °C`, `${temperatureFahrenheit} °F`);
   createRow('Humidity', `${data.main.humidity} %`);
   createRow('Pressure', `${data.main.pressure} hPa`);
   createRow('Condition', data.weather[0].description, createWeatherIcon(data.weather[0].icon));
 
-  // Append tbody to table
   table.appendChild(tbody);
 
-  // Add classes to the table for styling (assuming you use Bootstrap classes)
   table.classList.add('table', 'mt-4');
 
-  // Create and append a header
   var header = document.createElement('h1');
   header.textContent = 'WEATHER OR NOT';
 
-  // Create input and button elements
   var input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'zipCodeInput');
@@ -154,9 +147,8 @@ function createWeatherTable(data) {
   button.textContent = 'Get Weather';
   button.addEventListener('click', currentWeatherData);
 
-  // Append header, input, and button elements to the page
   var weatherDataDiv = document.getElementById('weatherData');
-  weatherDataDiv.innerHTML = ''; // Clear existing content
+  weatherDataDiv.innerHTML = ''; // clear field
   weatherDataDiv.appendChild(header);
   weatherDataDiv.appendChild(input);
   weatherDataDiv.appendChild(button);
@@ -164,24 +156,45 @@ function createWeatherTable(data) {
 
   return table;
 
-  // Helper function to create a table row with multiple cells
-  function createRow(label, ...values) {
-    var row = document.createElement('tr');
-    var th = document.createElement('th');
-    th.setAttribute('scope', 'row');
-    th.textContent = label;
-    row.appendChild(th);
 
-    values.forEach(value => {
-      var td = document.createElement('td');
+  // function createRow(label, ...values) {
+  //   var row = document.createElement('tr');
+  //   var th = document.createElement('th');
+  //   th.setAttribute('scope', 'row');
+  //   th.textContent = label;
+  //   row.appendChild(th);
+
+  //   values.forEach(value => {
+  //     var td = document.createElement('td');
+  //     td.textContent = value;
+  //     row.appendChild(td);
+  //   });
+
+  //   tbody.appendChild(row);
+  // }
+
+
+function createRow(label, ...values) {
+  var row = document.createElement('tr');
+  var th = document.createElement('th');
+  th.setAttribute('scope', 'row');
+  th.textContent = label;
+  row.appendChild(th);
+
+  values.forEach(value => {
+    var td = document.createElement('td');
+    if (value instanceof Element) {
+      // If the value is an HTML element, append it directly
+      td.appendChild(value);
+    } else {
       td.textContent = value;
-      row.appendChild(td);
-    });
+    }
+    row.appendChild(td);
+  });
 
-    tbody.appendChild(row);
-  }
+  tbody.appendChild(row);
+}
 
-  // Helper function to create an image element for the weather icon
   function createWeatherIcon(icon) {
     var iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
     var img = document.createElement('img');

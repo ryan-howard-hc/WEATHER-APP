@@ -11,15 +11,15 @@ body {
 
 @font-face {
   font-family: 'ChrustyRock';
-  src:url('/ChrustyRock.ttf') format('truetype');
+  src:url('ChrustyRock.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Madrigal';
-  src:url('/Madrigal.ttf') format('truetype');
+  src:url('Madrigal.ttf') format('truetype');
 }
 @font-face {
   font-family: 'KungFu';
-  src:url('/KungFu.otf') format('opentype');
+  src:url('KungFu.otf') format('opentype');
 }
 
 

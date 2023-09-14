@@ -174,27 +174,30 @@ function createWeatherTable(data) {
   // }
 
 
-function createRow(label, ...values) {
-  var row = document.createElement('tr');
-  var th = document.createElement('th');
-  th.setAttribute('scope', 'row');
-  th.textContent = label;
-  row.appendChild(th);
-  var temperatureCell = document.createElement('td');
-
-
-  //[object HTMLImageElement] was appearing, bc it was trying to append as text
-  values.forEach(value => {
-    if (value instanceof Element) {
-      temperatureCell.appendChild(value);
-    } else {
-      temperatureCell.textContent += value + ' '; // Concatenate values with a space
-    }
-  });
-
-  row.appendChild(temperatureCell);
-  tbody.appendChild(row);
-}
+  function createRow(label, ...values) {
+    var row = document.createElement('tr');
+    var th = document.createElement('th');
+    th.setAttribute('scope', 'row');
+    th.textContent = label;
+    row.appendChild(th);
+  
+    var temperatureCell = document.createElement('td');
+    values.forEach((value, index) => {
+      if (value instanceof Element) {
+        temperatureCell.appendChild(value);
+        temperatureCell.classList.add('temperature-cell');
+      } else {
+        if (index !== 0) {
+          // learned about non breaking spaces
+          temperatureCell.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+        }
+        temperatureCell.textContent += value;
+      }
+    });
+  
+    row.appendChild(temperatureCell);
+    tbody.appendChild(row);
+  }
 
   function createWeatherIcon(icon) {
     var iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;

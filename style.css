@@ -1,25 +1,25 @@
 .table {
-    background-color:aquamarine !important; 
-    border: 2px solid black !important; 
-  }
-  .table tr {
-    margin-bottom: 10px;
-  }
-  
-  .table th,
-  .table td {
-    background-color: aquamarine !important; 
-    
+  background-color: aquamarine !important;
+  border: 2px solid black !important;
+}
 
-  }
+.table tr {
+  margin-bottom: 10px;
+}
+
+.table th,
+.table td {
+  background-color: aquamarine !important;
+  padding-right: 10px; /* Adjust the padding-right value to control the spacing */
+}
+
 h1 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color:aquamarine;
-    padding: 10px;
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: aquamarine;
+  padding: 10px;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

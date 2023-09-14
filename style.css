@@ -3,14 +3,37 @@
   border: 2px solid black !important;
 }
 
+
+
+
 .table tr {
   margin-bottom: 10px;
 }
 
+/* .table tr td.city-label,
+.table tr td.city-value,
+.table tr td.temp-label,
+.table tr td.temp-value,
+.table tr td.humidity-label,
+.table tr td.humidity-value,
+.table tr td.pressure-label,
+.table tr td.pressure-value,
+.table tr td.condition-label,
+.table tr td.condition-value {
+  font-size: xx-large !important;
+} */
+
+
 .table th,
 .table td {
   background-color: aquamarine !important;
-  padding-right: 10px; /* Adjust the padding-right value to control the spacing */
+  padding-right: 10px; 
+  text-align: center;
+  vertical-align: middle; 
+  padding-bottom: 20px !important;
+  padding-top: 20px !important;
+  font-weight: bold;
+  font-size: x-large;
 }
 
 h1 {
@@ -19,7 +42,7 @@ h1 {
   left: 0;
   width: 100%;
   background-color: aquamarine;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

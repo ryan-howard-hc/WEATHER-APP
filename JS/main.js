@@ -11,6 +11,7 @@ function currentWeatherData() {
 
       weatherDataDiv.appendChild(table);
       var header = document.createElement('h1');
+      
       header.textContent = 'WEATHER OR NOT';
       weatherDataDiv.appendChild(header);
     })
@@ -20,6 +21,10 @@ var locationButton = document.createElement('button');
 locationButton.setAttribute('id', 'getLocationData');
 locationButton.textContent = 'Get Location Weather';
 locationButton.addEventListener('click', getLocationWeatherData);
+locationButton.style.backgroundColor = '#3498db';
+locationButton.style.color = '#fff';
+locationButton.style.marginBottom = '10px';
+locationButton.style.fontFamily ='ChrustyRock';
 locationButton.classList.add('btn', 'btn-lg', 'rounded-pill');
 weatherDataDiv.appendChild(locationButton);
 function getLocationWeatherData() {
@@ -38,6 +43,8 @@ function getLocationWeatherData() {
           weatherDataDiv.innerHTML = '';
           weatherDataDiv.appendChild(table);
           var header = document.createElement('h1');
+          header.style.borderBottom='2px solid black';
+
           header.textContent = 'WEATHER OR NOT';
           weatherDataDiv.appendChild(header);
         })
@@ -58,6 +65,10 @@ function createWeatherTable(data) {
   var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(1);
 
   var table = document.createElement('table');
+  table.style.fontFamily='KungFu';
+  table.style.fontWeight='bold';
+  table.style.letterSpacing='5px';
+  
   var tbody = document.createElement('tbody');
   
   createRow('City :', data.name);
@@ -72,8 +83,11 @@ function createWeatherTable(data) {
 
   var header = document.createElement('h1');
   header.textContent = 'WEATHER OR NOT';
-  header.classList.add('display-4');
+  header.style.borderBottom='2px solid black';
   var input = document.createElement('input');
+  input.style.fontFamily='KungFu';
+  input.style.letterSpacing='3px',
+  input.style.fontWeight='bold';
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'zipCodeInput');
   input.setAttribute('placeholder', 'ENTER ZIP CODE HERE');
@@ -83,6 +97,10 @@ function createWeatherTable(data) {
   button.setAttribute('id', 'currentWeatherData');
   button.textContent = 'Get Weather';
   button.addEventListener('click', currentWeatherData);
+button.style.backgroundColor = '#3498db';
+button.style.color = '#fff';
+button.style.marginBottom = '10px';
+button.style.fontFamily ='ChrustyRock';
   button.classList.add('btn' ,'btn-lg', 'rounded-pill')
 
   var weatherDataDiv = document.getElementById('weatherData');
@@ -112,7 +130,7 @@ function createWeatherTable(data) {
       } else {
         if (index !== 0) {
           // learned about non breaking spaces
-          temperatureCell.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+          temperatureCell.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;';
         }
         temperatureCell.textContent += value;
       }

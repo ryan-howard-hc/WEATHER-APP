@@ -3,7 +3,18 @@
   border: 2px solid black !important;
 }
 
-
+@font-face {
+  font-family: 'ChrustyRock';
+  src:url('/ChrustyRock.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Madrigal';
+  src:url('/Madrigal.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'KungFu';
+  src:url('/KungFu.otf') format('opentype');
+}
 
 
 .table tr {

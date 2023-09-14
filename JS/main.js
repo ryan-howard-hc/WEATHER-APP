@@ -1,3 +1,4 @@
+
 function currentWeatherData() {
     var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
     var zipCode = document.getElementById("zipCodeInput").value;
@@ -16,16 +17,6 @@ function currentWeatherData() {
 
 
 
-var locationButton = document.createElement('button');
-locationButton.setAttribute('id', 'getLocationData');
-locationButton.textContent = 'Get Location Weather';
-locationButton.addEventListener('click', getLocationWeatherData);
-locationButton.style.backgroundColor = '#3498db';
-locationButton.style.color = '#fff';
-locationButton.style.marginBottom = '10px';
-locationButton.style.fontFamily = 'ChrustyRock';
-locationButton.classList.add('btn', 'btn-lg', 'rounded-pill');
-weatherDataDiv.appendChild(locationButton);
 
 
 
@@ -136,7 +127,6 @@ function createWeatherTable(data) {
     weatherDataDiv.appendChild(header);
     weatherDataDiv.appendChild(input);
     weatherDataDiv.appendChild(button);
-    weatherDataDiv.appendChild(locationButton);
 
     weatherDataDiv.appendChild(table);
 

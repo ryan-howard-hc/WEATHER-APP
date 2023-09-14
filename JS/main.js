@@ -16,6 +16,42 @@ function currentWeatherData() {
     })
     .catch(error => alert(error));
 }
+var locationButton = document.createElement('button');
+locationButton.setAttribute('id', 'getLocationData');
+locationButton.textContent = 'Get Location Weather';
+locationButton.addEventListener('click', getLocationWeatherData);
+locationButton.classList.add('btn', 'btn-lg', 'rounded-pill');
+weatherDataDiv.appendChild(locationButton);
+function getLocationWeatherData() {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
+
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+        .then(response => response.ok ? response.json() : Promise.reject('Error fetching weather data'))
+        .then(data => {
+          var table = createWeatherTable(data);
+          var weatherDataDiv = document.getElementById("weatherData");
+
+          // Clear existing weather data and add the new table
+          weatherDataDiv.innerHTML = '';
+          weatherDataDiv.appendChild(table);
+          var header = document.createElement('h1');
+          header.textContent = 'WEATHER OR NOT';
+          weatherDataDiv.appendChild(header);
+        })
+        .catch(error => alert(error));
+    }, function (error) {
+      alert('Error getting location: ' + error.message);
+    }, {
+      enableHighAccuracy: true
+    });
+  } else {
+    alert('Geolocation is not available in your browser');
+  }
+}
 
 function createWeatherTable(data) {
   var temperatureKelvin = data.main.temp;
@@ -55,6 +91,8 @@ function createWeatherTable(data) {
   weatherDataDiv.appendChild(header);
   weatherDataDiv.appendChild(input);
   weatherDataDiv.appendChild(button);
+  weatherDataDiv.appendChild(locationButton);
+
   weatherDataDiv.appendChild(table);
 
   return table;

@@ -35,7 +35,6 @@ function getLocationWeatherData() {
           var table = createWeatherTable(data);
           var weatherDataDiv = document.getElementById("weatherData");
 
-          // Clear existing weather data and add the new table
           weatherDataDiv.innerHTML = '';
           weatherDataDiv.appendChild(table);
           var header = document.createElement('h1');
@@ -87,7 +86,7 @@ function createWeatherTable(data) {
   button.classList.add('btn' ,'btn-lg', 'rounded-pill')
 
   var weatherDataDiv = document.getElementById('weatherData');
-  weatherDataDiv.innerHTML = ''; // clear field
+  weatherDataDiv.innerHTML = ''; 
   weatherDataDiv.appendChild(header);
   weatherDataDiv.appendChild(input);
   weatherDataDiv.appendChild(button);

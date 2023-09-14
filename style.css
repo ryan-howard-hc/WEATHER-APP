@@ -1,5 +1,11 @@
+body {
+  background-image: url('cloud.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .table {
-  background-color: aquamarine !important;
+  background-color: rgba(127, 255, 212, 0.1) !important;
   border: 2px solid black !important;
 }
 
@@ -37,7 +43,7 @@
 
 .table th,
 .table td {
-  background-color: aquamarine !important;
+  background-color: rgba(127, 255, 212, 0.1) !important;
   padding-right: 10px; 
   text-align: center;
   vertical-align: middle; 
@@ -52,7 +58,7 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: aquamarine;
+  background-color: rgba(127, 255, 212, 0.1);
   padding: 20px;
   text-align: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

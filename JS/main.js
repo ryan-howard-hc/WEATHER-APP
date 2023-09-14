@@ -68,6 +68,7 @@ function createWeatherTable(data) {
   table.style.fontFamily='KungFu';
   table.style.fontWeight='bold';
   table.style.letterSpacing='5px';
+  table.style.backgroundColor='rgba(127, 255, 212, 0.1)';
   
   var tbody = document.createElement('tbody');
   

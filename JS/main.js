@@ -181,10 +181,11 @@ function createRow(label, ...values) {
   th.textContent = label;
   row.appendChild(th);
 
+
+  //[object HTMLImageElement] was appearing, bc it was trying to append as text
   values.forEach(value => {
     var td = document.createElement('td');
     if (value instanceof Element) {
-      // If the value is an HTML element, append it directly
       td.appendChild(value);
     } else {
       td.textContent = value;

@@ -3,7 +3,7 @@ function currentWeatherData() {
     var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
     var zipCode = document.getElementById("zipCodeInput").value;
 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`).then(response => response.ok ? response.json() : Promise.reject('Invalid zip code')).then(data => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`).then(response => response.ok ? response.json() : Promise.reject('Invalid zip code')).then(data => {
         var table = createWeatherTable(data);
         var weatherDataDiv = document.getElementById("weatherData");
 
@@ -27,7 +27,7 @@ function getLocationWeatherData() {
             var longitude = position.coords.longitude;
             var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
 
-            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`).then(response => response.ok ? response.json() : Promise.reject('Error fetching weather data')).then(data => {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`).then(response => response.ok ? response.json() : Promise.reject('Error fetching weather data')).then(data => {
                 var table = createWeatherTable(data);
                 var weatherDataDiv = document.getElementById("weatherData");
                 var input = document.createElement('input');

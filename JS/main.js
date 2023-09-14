@@ -180,19 +180,19 @@ function createRow(label, ...values) {
   th.setAttribute('scope', 'row');
   th.textContent = label;
   row.appendChild(th);
+  var temperatureCell = document.createElement('td');
 
 
   //[object HTMLImageElement] was appearing, bc it was trying to append as text
   values.forEach(value => {
-    var td = document.createElement('td');
     if (value instanceof Element) {
-      td.appendChild(value);
+      temperatureCell.appendChild(value);
     } else {
-      td.textContent = value;
+      temperatureCell.textContent += value + ' '; // Concatenate values with a space
     }
-    row.appendChild(td);
   });
 
+  row.appendChild(temperatureCell);
   tbody.appendChild(row);
 }
 

@@ -34,6 +34,7 @@ function getLocationWeatherData() {
                 input.style.fontFamily = 'KungFu';
                 input.style.letterSpacing = '3px',
                 input.style.fontWeight = 'bold';
+                input.style.marginBottom='10px';
                 input.setAttribute('type', 'text');
                 input.setAttribute('id', 'zipCodeInput');
                 input.setAttribute('placeholder', 'ENTER ZIP CODE HERE');
@@ -68,7 +69,11 @@ function getLocationWeatherData() {
     }
     
 }
-
+function getWindDirection(degrees) {
+  const directions = ['North', 'North-Northeast', 'Northeast', 'East-Northeast', 'East', 'East-Southeast', 'Southeast', 'South-Southeast', 'South', 'South-Southwest', 'Southwest', 'West-Southwest', 'West', 'West-Northwest', 'Northwest', 'North-Northwest'];
+  const index = Math.round(degrees / 22.5) % 16;
+  return directions[index];
+}
 function createWeatherTable(data) {
     var temperatureKelvin = data.main.temp;
     var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
@@ -93,6 +98,11 @@ function createWeatherTable(data) {
         data.main.pressure
     } hPa`);
     createRow('Condition :', data.weather[0].description, createWeatherIcon(data.weather[0].icon));
+    createRow('Wind Speed :', `${data.wind.speed} m/s`);
+    const windDirection = getWindDirection(data.wind.deg);
+
+    createRow('Wind Direction :', `${data.wind.deg}° (${windDirection})`);
+
 
     table.appendChild(tbody);
 
@@ -107,6 +117,8 @@ function createWeatherTable(data) {
     input.style.fontFamily = 'KungFu';
     input.style.letterSpacing = '3px',
     input.style.fontWeight = 'bold';
+    input.style.marginBottom='10px';
+
     input.setAttribute('type', 'text');
     input.setAttribute('id', 'zipCodeInput');
     input.setAttribute('placeholder', 'ENTER ZIP CODE HERE');

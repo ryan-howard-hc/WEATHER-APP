@@ -34,6 +34,8 @@ function getLocationWeatherData() {
                 input.style.fontFamily = 'KungFu';
                 input.style.letterSpacing = '3px',
                 input.style.fontWeight = 'bold';
+                input.style.marginBottom='10px';
+                input.style.marginTop='30px';
                 input.setAttribute('type', 'text');
                 input.setAttribute('id', 'zipCodeInput');
                 input.setAttribute('placeholder', 'ENTER ZIP CODE HERE');
@@ -69,6 +71,11 @@ function getLocationWeatherData() {
     
 }
 
+function getWindDirection(degrees) {
+  const directions = ['North', 'North-Northeast', 'Northeast', 'East-Northeast', 'East', 'East-Southeast', 'Southeast', 'South-Southeast', 'South', 'South-Southwest', 'Southwest', 'West-Southwest', 'West', 'West-Northwest', 'Northwest', 'North-Northwest'];
+  const index = Math.round(degrees / 22.5) % 16;
+  return directions[index];
+}
 function createWeatherTable(data) {
     var temperatureKelvin = data.main.temp;
     var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
@@ -93,6 +100,11 @@ function createWeatherTable(data) {
         data.main.pressure
     } hPa`);
     createRow('Condition :', data.weather[0].description, createWeatherIcon(data.weather[0].icon));
+    createRow('Wind Speed :', `${data.wind.speed} m/s`);
+    const windDirection = getWindDirection(data.wind.deg);
+
+    createRow('Wind Direction :', `${data.wind.deg}° (${windDirection})`);
+
 
     table.appendChild(tbody);
 
@@ -107,6 +119,9 @@ function createWeatherTable(data) {
     input.style.fontFamily = 'KungFu';
     input.style.letterSpacing = '3px',
     input.style.fontWeight = 'bold';
+    input.style.marginBottom='10px';
+    input.style.marginTop='30px';
+
     input.setAttribute('type', 'text');
     input.setAttribute('id', 'zipCodeInput');
     input.setAttribute('placeholder', 'ENTER ZIP CODE HERE');
@@ -166,3 +181,78 @@ function createWeatherTable(data) {
         return img;
     }
 }
+
+
+
+// function forecastWeatherData(zipCode) {
+//   var apiKey = 'f91a2ba49ec43ee8f836bbbd73a614e7';
+
+//   fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${apiKey}`)
+//       .then(response => {
+//           if (!response.ok) {
+//               console.error('API request failed:', response.status, response.statusText);
+//               return Promise.reject('Invalid zip code');
+//           }
+//           return response.json();
+//       })
+//       .then(data => {
+//           console.log(data); // Log the received forecast data
+//           var forecastTable = createForecastTable(data);
+//           var forecastDataDiv = document.getElementById("forecastData");
+
+//           forecastDataDiv.innerHTML = ''; // Clear existing forecast data
+//           forecastDataDiv.appendChild(forecastTable);
+//       })
+//       .catch(error => {
+//           console.error('Forecast API error:', error);
+//           alert(error);
+//       });
+// }
+
+
+// function createForecastTable(data) {
+//   var table = document.createElement('table');
+//   table.style.fontFamily = 'KungFu';
+//   table.style.fontWeight = 'bold';
+//   table.style.letterSpacing = '5px';
+//   table.style.backgroundColor = 'rgba(127, 255, 212, 0.1)';
+
+//   var tbody = document.createElement('tbody');
+
+//   data.list.forEach(entry => {
+//       var forecastDate = new Date(entry.dt * 1000); 
+//       var temperatureKelvin = entry.main.temp;
+//       var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1);
+//       var temperatureFahrenheit = ((temperatureCelsius * 9 / 5) + 32).toFixed(1);
+
+//       createRow('Date :', formatDate(forecastDate));
+//       createRow('Temperature :', `${entry.main.temp} K`, `${temperatureCelsius} °C`, `${temperatureFahrenheit} °F`);
+//       createRow('Humidity :', `${entry.main.humidity} %`);
+//       createRow('Pressure :', `${entry.main.pressure} hPa`);
+//       createRow('Condition :', entry.weather[0].description, createWeatherIcon(entry.weather[0].icon));
+
+//       //  separator between forecast entries
+//       createSeparatorRow();
+//   });
+
+//   table.appendChild(tbody);
+//   table.classList.add('table', 'mt-4');
+
+//   return table;
+// }
+
+// //  function to create a separator row
+// function createSeparatorRow() {
+//   var separatorRow = document.createElement('tr');
+//   var separatorCell = document.createElement('td');
+//   separatorCell.colSpan = 2; 
+//   separatorCell.style.borderTop = '1px solid #ccc';
+//   separatorRow.appendChild(separatorCell);
+//   tbody.appendChild(separatorRow);
+// }
+
+// //  function to format the date in a user-friendly format
+// function formatDate(date) {
+//   var options = { year: 'numeric', month: 'short', day: 'numeric' };
+//   return date.toLocaleDateString('en-US', options);
+// }
